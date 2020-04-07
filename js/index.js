@@ -31,14 +31,22 @@ docBody.addEventListener("keydown", () => {
     }
 })
 
-logoHeading.addEventListener("click", () => logoHeading.textContent += "!!!")
+logoHeading.addEventListener("click", () => {
+    logoHeading.textContent += "!!!"
+    event.stopPropagation()
+})
 logoHeading.addEventListener("auxclick", () => navBox.style.background = "red")
 logoHeading.addEventListener("mouseover", () => event.target.style = "cursor: pointer")
 logoHeading.addEventListener("mouseleave", () => logoHeading.textContent = "Fun Bus")
 
 addEventListenerAll(navLinks, "mouseover", () => event.target.style.textDecoration = "underline")
 addEventListenerAll(navLinks, "mouseleave", () => event.target.style.textDecoration = "none")
-navBox.addEventListener("mouse")
+addEventListenerAll(navLinks, "click", () => {
+    event.preventDefault()
+    event.stopPropagation()
+})
+
+navBox.addEventListener("click", () => navBox.style.background = "blue")
 
 addEventListenerAll(imgs, "dblclick", () => event.target.classList.toggle("dbl-clicked"))
 
